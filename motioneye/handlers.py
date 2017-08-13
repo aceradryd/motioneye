@@ -1009,7 +1009,7 @@ class PictureHandler(BaseHandler):
         logging.debug('listing pictures for camera %(id)s' % {'id': camera_id})
         
         camera_config = config.get_camera(camera_id)
-        if utils.is_local_motion_camera(camera_config):
+        if utils.is_local_motion_camera(camera_config) or True:
             def on_media_list(media_list):
                 if media_list is None:
                     return self.finish_json({'error': 'Failed to get pictures list.'})
@@ -1075,7 +1075,7 @@ class PictureHandler(BaseHandler):
                 'filename': filename, 'id': camera_id})
         
         camera_config = config.get_camera(camera_id)
-        if utils.is_local_motion_camera(camera_config):
+        if utils.is_local_motion_camera(camera_config) or True:
             content = mediafiles.get_media_content(camera_config, filename, 'picture')
             
             pretty_filename = camera_config['@name'] + '_' + os.path.basename(filename)
@@ -1107,7 +1107,7 @@ class PictureHandler(BaseHandler):
                 'filename': filename, 'id': camera_id})
         
         camera_config = config.get_camera(camera_id)
-        if utils.is_local_motion_camera(camera_config):
+        if utils.is_local_motion_camera(camera_config) or True:
             content = mediafiles.get_media_preview(camera_config, filename, 'picture',
                     width=self.get_argument('width', None),
                     height=self.get_argument('height', None))
@@ -1146,7 +1146,7 @@ class PictureHandler(BaseHandler):
                 'filename': filename, 'id': camera_id})
         
         camera_config = config.get_camera(camera_id)
-        if utils.is_local_motion_camera(camera_config):
+        if utils.is_local_motion_camera(camera_config) or True:
             try:
                 mediafiles.del_media_content(camera_config, filename, 'picture')
                 self.finish_json()
@@ -1176,7 +1176,7 @@ class PictureHandler(BaseHandler):
             logging.debug('serving zip file for group "%(group)s" of camera %(id)s with key %(key)s' % {
                     'group': group or 'ungrouped', 'id': camera_id, 'key': key})
             
-            if utils.is_local_motion_camera(camera_config):
+            if utils.is_local_motion_camera(camera_config) or True:
                 data = mediafiles.get_prepared_cache(key)
                 if not data:
                     logging.error('prepared cache data for key "%s" does not exist' % key)
@@ -1244,7 +1244,7 @@ class PictureHandler(BaseHandler):
             logging.debug('serving timelapse movie for group "%(group)s" of camera %(id)s with key %(key)s' % {
                     'group': group or 'ungrouped', 'id': camera_id, 'key': key})
             
-            if utils.is_local_motion_camera(camera_config):
+            if utils.is_local_motion_camera(camera_config) or True:
                 data = mediafiles.get_prepared_cache(key)
                 if data is None:
                     logging.error('prepared cache data for key "%s" does not exist' % key)
@@ -1351,7 +1351,7 @@ class PictureHandler(BaseHandler):
                 'group': group or 'ungrouped', 'id': camera_id})
 
         camera_config = config.get_camera(camera_id)
-        if utils.is_local_motion_camera(camera_config):
+        if utils.is_local_motion_camera(camera_config) or True:
             try:
                 mediafiles.del_media_group(camera_config, group, 'picture')
                 self.finish_json()
@@ -1424,7 +1424,7 @@ class MovieHandler(BaseHandler):
         logging.debug('listing movies for camera %(id)s' % {'id': camera_id})
         
         camera_config = config.get_camera(camera_id)
-        if utils.is_local_motion_camera(camera_config):
+        if utils.is_local_motion_camera(camera_config) or True:
             def on_media_list(media_list):
                 if media_list is None:
                     return self.finish_json({'error': 'Failed to get movies list.'})
@@ -1456,7 +1456,7 @@ class MovieHandler(BaseHandler):
                 'filename': filename, 'id': camera_id})
         
         camera_config = config.get_camera(camera_id)
-        if utils.is_local_motion_camera(camera_config):
+        if utils.is_local_motion_camera(camera_config) or True:
             content = mediafiles.get_media_content(camera_config, filename, 'movie')
             
             pretty_filename = camera_config['@name'] + '_' + os.path.basename(filename)
@@ -1488,7 +1488,7 @@ class MovieHandler(BaseHandler):
                 'filename': filename, 'id': camera_id})
         
         camera_config = config.get_camera(camera_id)
-        if utils.is_local_motion_camera(camera_config):
+        if utils.is_local_motion_camera(camera_config) or True:
             content = mediafiles.get_media_preview(camera_config, filename, 'movie',
                     width=self.get_argument('width', None),
                     height=self.get_argument('height', None))
@@ -1527,7 +1527,7 @@ class MovieHandler(BaseHandler):
                 'filename': filename, 'id': camera_id})
         
         camera_config = config.get_camera(camera_id)
-        if utils.is_local_motion_camera(camera_config):
+        if utils.is_local_motion_camera(camera_config) or True:
             try:
                 mediafiles.del_media_content(camera_config, filename, 'movie')
                 self.finish_json()
@@ -1554,7 +1554,7 @@ class MovieHandler(BaseHandler):
                 'group': group or 'ungrouped', 'id': camera_id})
 
         camera_config = config.get_camera(camera_id)
-        if utils.is_local_motion_camera(camera_config):
+        if utils.is_local_motion_camera(camera_config) or True:
             try:
                 mediafiles.del_media_group(camera_config, group, 'movie')
                 self.finish_json()
