@@ -392,7 +392,8 @@ def get_camera(camera_id, as_lines=False):
         _set_default_motion_camera(camera_id, camera_config)
     
     elif utils.is_remote_camera(camera_config):
-        pass
+        camera_config.setdefault('@name', 'Camera' + str(camera_id))
+        camera_config.setdefault('target_dir', os.path.join(settings.MEDIA_PATH, camera_config['@name']))
     
     elif utils.is_simple_mjpeg_camera(camera_config):
         _get_additional_config(camera_config, camera_id=camera_id)
